@@ -1,0 +1,10 @@
+*{
+  font-size: 1em;
+  font-family: sans-serif;
+  height: max-content;
+  margin: 0;
+}
+
+html, body, #root, #root>div {
+  height: 100%
+}
