@@ -1,6 +1,7 @@
 import '../Filter/style.css'
 import { useGlobal } from '../../context/globalContext';
 import { useState } from 'react';
+import moment from 'moment';
 
 function Filter() {
 
@@ -8,8 +9,8 @@ function Filter() {
     
   const [nameSellerFilter, setNameSellerFilter] = useState('');
   const [nameCustomerFilter, setNameCustomerFilter] = useState('');
-  const [initialDateFilter, setInitialDateFilter] = useState('');
-  const [finalDateFilter, setFinalDateFilter] = useState('');
+  const [initialDateFilter, setInitialDateFilter] = useState(moment(new Date()).format('YYYY-MM-DD'));
+  const [finalDateFilter, setFinalDateFilter] = useState(moment(new Date()).format('YYYY-MM-DD'));
 
   const clearFilter = async () => {
     setNameSellerFilter('');

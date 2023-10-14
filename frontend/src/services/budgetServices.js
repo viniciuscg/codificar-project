@@ -14,7 +14,7 @@ export class BudgetServices {
   static async getAll(page = 1, {nameSeller, nameCustomer, initialDate, finalDate}) {
     const queryNameSeller = nameSeller ? `&nameSeller=${nameSeller}` : ''
     const queryNameCustomer = nameCustomer ? `&nameCustomer=${nameCustomer}` : ''
-    const queryDates = (initialDate && finalDate) ? `&initiaDate=${initialDate}&finalDate=${finalDate}}` : ''
+    const queryDates = (initialDate && finalDate) ? `&initialDate=${initialDate}&finalDate=${finalDate}` : ''
     
     const response = await api.get(`/budget?page=${page}${queryNameSeller}${queryNameCustomer}${queryDates}`)
     return response.data
