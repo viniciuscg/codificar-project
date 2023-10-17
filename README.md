@@ -64,17 +64,18 @@ Para testar se a API está funcionando corretamente, acesse **localhost:8000/api
 
 Na tela inicial, temos a tabela com os orçamentos. Os orçamentos estão ordenadas pelo *id*, em ordem decrescente. Também existe um campo responsável por criar novos orçamentos.
 
-![tela inicial](![image](https://github.com/viniciuscg/codificar-project/assets/105397334/7744aa6e-5023-4c29-b65e-ca153d020a71))
+![tela inicial](https://github.com/viniciuscg/codificar-project/assets/105397334/7744aa6e-5023-4c29-b65e-ca153d020a71)
 
 Podemos visualizar os filtros da tabela no canto superior direito da pagina.
 
-![filtros](![image](https://github.com/viniciuscg/codificar-project/assets/105397334/83144afe-9693-41aa-b5b3-0641954d4893)
+![filtros](https://github.com/viniciuscg/codificar-project/assets/105397334/83144afe-9693-41aa-b5b3-0641954d4893)
 )
 
 Nesta tela, estão todas as funções para excluir editar e adicionar orçamentos.
 
-![excluir e editar](https://user-images.githubusercontent.com/38995753/84848613-df04c180-b029-11ea-933c-21e57c05e123.png)
-![adicionar](![image](https://github.com/viniciuscg/codificar-project/assets/105397334/5fb89e7c-f694-4855-98e6-dc72dd008710))
+![excluir e editar](https://github.com/viniciuscg/codificar-project/assets/105397334/27ebe1a4-8bfc-47ae-894b-ca50dfaad922
+)
+![adicionar](https://github.com/viniciuscg/codificar-project/assets/105397334/5fb89e7c-f694-4855-98e6-dc72dd008710)
 
 ## API
 
