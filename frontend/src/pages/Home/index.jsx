@@ -20,8 +20,8 @@ function Home() {
         <Filter/>
       </div>
         <Table />
-        {modal == true &&
-        <Modal />
+        {modal &&
+          <Modal />
         }
     </div>
   )

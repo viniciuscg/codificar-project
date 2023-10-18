@@ -1,23 +1,22 @@
 import '../Filter/style.css'
 import { useGlobal } from '../../context/globalContext';
 import { useState } from 'react';
-import moment from 'moment';
 
 function Filter() {
-
-  const {getAll, page} = useGlobal()
+  const {getAll, setPage} = useGlobal()
     
   const [nameSellerFilter, setNameSellerFilter] = useState('');
   const [nameCustomerFilter, setNameCustomerFilter] = useState('');
-  const [initialDateFilter, setInitialDateFilter] = useState(moment(new Date()).format('YYYY-MM-DD'));
-  const [finalDateFilter, setFinalDateFilter] = useState(moment(new Date()).format('YYYY-MM-DD'));
+  const [initialDateFilter, setInitialDateFilter] = useState('');
+  const [finalDateFilter, setFinalDateFilter] = useState('');
 
   const clearFilter = async () => {
     setNameSellerFilter('');
     setNameCustomerFilter('');
     setInitialDateFilter('');
     setFinalDateFilter('');
-    await getAll(page, {
+    setPage(1)
+    await getAll(1, {
       nameSellerFilter,
       nameCustomerFilter,
       initialDateFilter,
@@ -28,7 +27,8 @@ function Filter() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await getAll(page, {
+      setPage(1)
+      await getAll(1, {
         nameSellerFilter,
         nameCustomerFilter,
         initialDateFilter,
@@ -43,8 +43,8 @@ function Filter() {
     <div className='filter-container'>
       <form onSubmit={ handleSubmit }>
         <div className='filter-container-input'>
-          <input value={nameCustomerFilter} onChange={e => setNameCustomerFilter(e.target.value)} type="text" placeholder='procurar nome cliente....'/>
-          <input value={nameSellerFilter} onChange={e => setNameSellerFilter(e.target.value)} type="text" placeholder='procurar nome vendedor....'/>
+          <input value={nameCustomerFilter} onChange={e => setNameCustomerFilter(e.target.value)} type="text" placeholder='Procurar pelo nome do cliente....'/>
+          <input value={nameSellerFilter} onChange={e => setNameSellerFilter(e.target.value)} type="text" placeholder='Procurar pelo nome do vendedor....'/>
         </div>
         <div className='filter-container-input'>
           <p>Filtrar por data:</p>

@@ -6,24 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
+        Schema::defaultStringLength(191);
         Schema::create('budget', function (Blueprint $table) {
             $table->id('id');
             $table->string('name_customer');
             $table->string('name_seller');
-            $table->float('value');
+            $table->double('value');
             $table->date('date');
             $table->string('description');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('budget');

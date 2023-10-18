@@ -11,15 +11,15 @@ function AddNewItem() {
   const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
   const [description, setDescription] = useState('');
 
-  const {createBudget, closeModal, query, editBudget, getAll} = useGlobal()
+  const {createBudget, closeModal, selectedBudget, editBudget, getAll} = useGlobal()
   
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!nameCustomer || !nameSeller || !value || !date || !description) 
-      alert('preencha os campos')
+      alert('Preencha os campos')
     try {
-      if (query?.id) {
-        await editBudget({id: query.id, nameCustomer, nameSeller, value, date, description})
+      if (selectedBudget?.id) {
+        await editBudget({id: selectedBudget.id, nameCustomer, nameSeller, value, date, description})
         getAll()
         closeModal(false)
         return
@@ -27,18 +27,17 @@ function AddNewItem() {
       await createBudget(nameCustomer, nameSeller, value, date, description)
       closeModal(false)
     } catch (error) {
-      alert(error)
+      alert(error.message)
     }
-
   }
 
   useEffect(() => {
-    if(query) {
-      setNameCustomer(query.name_customer)
-      setNameSeller(query.name_seller)
-      setValue(query.value)
-      setDate(query.date)
-      setDescription(query.description)
+    if(selectedBudget) {
+      setNameCustomer(selectedBudget.name_customer)
+      setNameSeller(selectedBudget.name_seller)
+      setValue(selectedBudget.value)
+      setDate(selectedBudget.date)
+      setDescription(selectedBudget.description)
     }
   },[])
 

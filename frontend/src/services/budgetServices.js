@@ -7,7 +7,7 @@ export class BudgetServices {
       const response = await api.post('/budget', {nameCustomer, nameSeller, value, date, description})
       return response.data
     } catch (error) {
-      throw new Error(error.message)
+      throw new Error(error.response.data.message)
     }   
   } 
     
@@ -26,8 +26,12 @@ export class BudgetServices {
   }
 
   static async edit(budget) {
-    const response = await api.post(`/budget/${budget.id}`, budget)
-    return response.data
+    try {
+      const response = await api.post(`/budget/${budget.id}`, budget)
+      return response.data
+    } catch (error) {
+      throw new Error(error.response.data.message)
+    }
   }
 
 }

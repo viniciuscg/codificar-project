@@ -7,14 +7,17 @@ export const GlobalProvider = ({ children }) => {
 
   const [budgets, setBudgets] = useState([])
   const [modal, setModal] = useState(false)
-  const [query, setQuery] = useState({})
+  const [selectedBudget, setSelectedBudget] = useState({})
   const [pages, setPages] = useState(1)
   const [page, setPage] = useState(1)
 
-
   const createBudget = async (nameCustomer, nameSeller, value, date, description) => {
-    const response = await BudgetServices.create(nameCustomer, nameSeller, value, date, description)
-    setBudgets([...budgets, response])
+    try {
+      await BudgetServices.create(nameCustomer, nameSeller, value, date, description)
+      getAll()
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   const getAll = async (page, req = {}) => {
@@ -32,15 +35,18 @@ export const GlobalProvider = ({ children }) => {
     await BudgetServices.delete(id)
     const filteredBudgets = budgets.filter(budget => budget.id !== id)
     setBudgets(filteredBudgets)
-  
   }
 
   const editBudget = async (req) => {
-    await BudgetServices.edit(req)
+    try {
+      await BudgetServices.edit(req)
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   const openModal = (t, budget = null) => {
-    setQuery(budget)
+    setSelectedBudget(budget)
     setModal(t)
   }
   
@@ -57,7 +63,7 @@ export const GlobalProvider = ({ children }) => {
       modal,
       openModal,
       closeModal,
-      query,
+      selectedBudget,
       editBudget,
       pages,
       setPage,
